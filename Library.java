@@ -12,27 +12,27 @@ public class Library {
         this.books = new ArrayList<>();
         this.members = new ArrayList<>();
     }
-    //We don't need 'getter and setter' because we don't want to change the private variables
+    //We don't need 'getter and setter' because we don't want to change the private variable
     //Create methods of this class:
     public void addBook(Book book) {
-        books.add(book);
+        if (!books.contains(book))      books.add(book);
     }
     public void addMember(Member member) {
-        members.add(member);
+        if (!members.contains(member))      members.add(member);
     }
     public void borrowBook(Member member, Book book) {
         if (members.contains(member)) {
             member.borrowBook(book);
             books.remove(book);
         }
-        else    System.out.println("Member is not in the library");
+        else    System.out.println("#####Member is not in the library");
     }
     public void returnBook(Member member, Book book) {
         if (members.contains(member)) {
             member.returnBook(book);
             books.add(book);
         }
-        else    System.out.println("Member is not in the library");
+        else    System.out.println("#####Member is not in the library");
     }
     //Create printMemberInfo method
     public void printLibraryInfo() {
