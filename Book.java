@@ -1,4 +1,4 @@
-//This method create an object of Book:
+//This method creates an object of Book:
 import java.util.*;
 
 public class Book {
