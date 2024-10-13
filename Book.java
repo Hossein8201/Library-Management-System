@@ -13,10 +13,6 @@ public class Book {
         if (id.length() != 5){
             System.out.println("id must be exactly 5 characters long");
             System.out.println("#####the construct process failed");
-            this.id = new StringBuilder();
-            this.title = new StringBuilder();
-            this.author = new StringBuilder();
-            this.isAvailable = false;
         }
         else {
             this.id = new StringBuilder(id);

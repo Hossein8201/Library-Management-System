@@ -36,18 +36,18 @@ public class Library {
     }
     //Create printMemberInfo method
     public void printLibraryInfo() {
-        System.out.println("-----Name: " + name);
-        System.out.println("-----Books of the Library: ");
+        System.out.println("----Name: " + name);
+        System.out.println("----Books of the Library: ");
         int numberIndex = 1;
         for (Book book : books) {
             System.out.println(">>>Book: '" + numberIndex++ + "' :");
             book.printBookInfo();
-        }
-        System.out.println("-----Members of the Library: ");
+        }if (books.isEmpty()) System.out.println("No books in the library");
+        System.out.println("----Members of the Library: ");
         numberIndex = 1;
         for (Member member : members) {
             System.out.println(">>>Member: '" + numberIndex++ + "' :");
             member.printMemberInfo();
-        }
+        }if (members.isEmpty()) System.out.println("No members in the library");
     }
 }
