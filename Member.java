@@ -39,7 +39,8 @@ public class Member {
         System.out.println("-----Name: " + Name);
         System.out.println("-----The borrowed books: ");
         for (Book book : borrowedBooks) {
-            System.out.println("----------" + book.toString());
+            System.out.println(">>>Borrowed book number '" + borrowedBooks.indexOf(book)+1 + "' :");
+            book.printBookInfo();
         }
     }
 }
