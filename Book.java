@@ -56,6 +56,6 @@ public class Book {
         System.out.println("------Book ID: " + id.toString());
         System.out.println("------Book Title: " + title.toString());
         System.out.println("------Book Author: " + author.toString());
-        System.out.println("------Is book available: " + isAvailable);
+        System.out.println("------Is book available in library: " + isAvailable);
     }
 }

@@ -18,11 +18,15 @@ public class Member {
             this.borrowedBooks = new ArrayList<>();
         }
     }
-    //We don't need 'getter and setter' because we don't want to change the private variables
+    //getter methods
+    public String getMemberId() {
+        return memberId;
+    }
+    //We don't need 'setter' because we don't want to change the private variables
     //Create borrowBook method and check the conditions
     public void borrowBook(Book book) {
         if (borrowedBooks.contains(book))       System.out.println("#####That book is already borrowed");
-        else if (borrowedBooks.size() > 3)      System.out.println("#####Yuo can't more than 3 books");
+        else if (borrowedBooks.size() >= 3)      System.out.println("#####You can't borrowed more than 3 books");
         else if (!book.getIsAvailable())        System.out.println("#####That book is not available");
         else {
             borrowedBooks.add(book);
@@ -32,7 +36,7 @@ public class Member {
     }
     //Create returnBook method
     public void returnBook(Book book) {
-        if (borrowedBooks.contains(book))   System.out.println("#####That book is not borrowed");
+        if (!borrowedBooks.contains(book))   System.out.println("#####That book is not borrowed");
         else {
             borrowedBooks.remove(book);
             book.setIsAvailable(true);
@@ -44,10 +48,9 @@ public class Member {
         System.out.println("------Member ID: " + memberId);
         System.out.println("------Name: " + name);
         System.out.println("------The borrowed books: ");
+        int borrowedBooksIndex = 1;
         for (Book book : borrowedBooks) {
-            System.out.println(">>>Borrowed book number '" + borrowedBooks.indexOf(book)+1 + "' :");
-            book.printBookInfo();
-        }
-        if (borrowedBooks.isEmpty())   System.out.println("Borrowed books is empty");
+            System.out.println(">>>Borrowed book number '" + borrowedBooksIndex++ + "' whit Title : " + book.getTitle());
+        }if (borrowedBooks.isEmpty())   System.out.println("Borrowed books is empty");
     }
 }

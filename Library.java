@@ -15,24 +15,28 @@ public class Library {
     //We don't need 'getter and setter' because we don't want to change the private variable
     //Create methods of this class:
     public void addBook(Book book) {
-        if (!books.contains(book))      books.add(book);
+        if (books.contains(book))   System.out.println("Book already exists!");
+        else if (book.getId() == null)   System.out.println("Book does not exist!");
+        else books.add(book);
     }
     public void addMember(Member member) {
-        if (!members.contains(member))      members.add(member);
+        if (members.contains(member))   System.out.println("Member already exists!");
+        else if (member.getMemberId() == null)   System.out.println("Member does not exist!");
+        else members.add(member);
     }
     public void borrowBook(Member member, Book book) {
-        if (members.contains(member)) {
-            member.borrowBook(book);
-            books.remove(book);
-        }
-        else    System.out.println("#####Member is not in the library");
+        if (!members.contains(member))
+            System.out.println("#####Member don't added to the library");
+        else if (!books.contains(book))
+            System.out.println("#####Book don't added to the library");
+        else    member.borrowBook(book);
     }
     public void returnBook(Member member, Book book) {
-        if (members.contains(member)) {
-            member.returnBook(book);
-            books.add(book);
-        }
-        else    System.out.println("#####Member is not in the library");
+        if (!members.contains(member))
+            System.out.println("#####Member don't added to the library");
+        else if (!books.contains(book))
+            System.out.println("#####Book don't added to the library");
+        else    member.returnBook(book);
     }
     //Create printMemberInfo method
     public void printLibraryInfo() {
