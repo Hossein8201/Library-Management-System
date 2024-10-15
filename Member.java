@@ -1,5 +1,4 @@
 //This class creates an object of Member
-import java.awt.print.Book;
 import java.util.*;
 
 public class Member {
@@ -31,29 +30,25 @@ public class Member {
     }
     //We don't need 'setter' because we don't want to change the private variables
     //Create borrowBook method and check the conditions
-    public void borrowBook(ArrayList<Book> books) {
-        for (Book book : books) {
-            if (borrowedBooks.contains(book))       System.out.println("#####That book with id '" + book.getId() + "' is already borrowed");
-            else if (borrowedBooks.size() >= 3)      System.out.println("#####Member with id '"+ this.getMemberId() +"' can't borrowed more than 3 books");
-            else if (!book.getIsAvailable())        System.out.println("#####That book with id '" + book.getId() + "' is not available in the library");
-            else {
-                borrowedBooks.add(book);
-                book.setIsAvailable(false);
-                System.out.println("Book with id '" + book.getId() + "' Borrowed");
-                //Track the number of borrowing book
-                book.setTrackBorrowingTimes("Book with title '" + book.getTitle() + "' borrowed by Member with name '" + this.getName() + "' .");
-            }
+    public void borrowBook(Book books) {
+        if (borrowedBooks.contains(book))       System.out.println("#####That book with id '" + book.getId() + "' is already borrowed");
+        else if (borrowedBooks.size() >= 3)      System.out.println("#####Member with id '"+ this.getMemberId() +"' can't borrowed more than 3 books");
+        else if (!book.getIsAvailable())        System.out.println("#####That book with id '" + book.getId() + "' is not available in the library");
+        else {
+            borrowedBooks.add(book);
+            book.setIsAvailable(false);
+            System.out.println("Book with id '" + book.getId() + "' Borrowed");
+            //Track the number of borrowing book
+            book.setTrackBorrowingTimes("Book with title '" + book.getTitle() + "' borrowed by Member with name '" + this.getName() + "' .");
         }
     }
     //Create returnBook method
-    public void returnBook(ArrayList<Book> books) {
-        for (Book book : books) {
-            if (!borrowedBooks.contains(book))   System.out.println("#####That book with id '" + book.getId() + "' is not borrowed");
-            else {
-                borrowedBooks.remove(book);
-                book.setIsAvailable(true);
-                System.out.println("Book with id '" + book.getId() + "' returned");
-            }
+    public void returnBook(Book books) {
+        if (!borrowedBooks.contains(book))   System.out.println("#####That book with id '" + book.getId() + "' is not borrowed");
+        else {
+            borrowedBooks.remove(book);
+            book.setIsAvailable(true);
+            System.out.println("Book with id '" + book.getId() + "' returned");
         }
     }
     //Create printMemberInfo method
