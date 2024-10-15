@@ -5,12 +5,12 @@ public class Member {
     //First we define the variables of this class
     private String memberId;
     private String name;
-    public ArrayList<Book> borrowedBooks;
+    private ArrayList<Book> borrowedBooks;
     //Now we create its constructor
     public Member(String memberId, String name) {
         if (memberId.length() != 6){
             System.out.println("memberId must be 6 digits long");
-            System.out.println("#####the construct process failed");
+            System.out.println("#####the construct process failed for member with id: " + memberId);
         }
         else {
             this.memberId = memberId;
@@ -22,25 +22,33 @@ public class Member {
     public String getMemberId() {
         return memberId;
     }
+    public String getName() {
+        return name;
+    }
+    public ArrayList<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
     //We don't need 'setter' because we don't want to change the private variables
     //Create borrowBook method and check the conditions
     public void borrowBook(Book book) {
-        if (borrowedBooks.contains(book))       System.out.println("#####That book is already borrowed");
-        else if (borrowedBooks.size() >= 3)      System.out.println("#####You can't borrowed more than 3 books");
-        else if (!book.getIsAvailable())        System.out.println("#####That book is not available");
+        if (borrowedBooks.contains(book))       System.out.println("#####That book with id '" + book.getId() + "' is already borrowed");
+        else if (borrowedBooks.size() >= 3)      System.out.println("#####Member with id '"+ this.getMemberId() +"' can't borrowed more than 3 books");
+        else if (!book.getIsAvailable())        System.out.println("#####That book with id '" + book.getId() + "' is not available in the library");
         else {
             borrowedBooks.add(book);
             book.setIsAvailable(false);
-            System.out.println("Book Borrowed");
+            System.out.println("Book with id '" + book.getId() + "' Borrowed");
+            //Track the number of borrowing book
+            book.setTrackBorrowingTimes("Book with title '" + book.getTitle() + "' borrowed by Member with name '" + this.getName() + "' .");
         }
     }
     //Create returnBook method
     public void returnBook(Book book) {
-        if (!borrowedBooks.contains(book))   System.out.println("#####That book is not borrowed");
+        if (!borrowedBooks.contains(book))   System.out.println("#####That book with id '" + book.getId() + "' is not borrowed");
         else {
             borrowedBooks.remove(book);
             book.setIsAvailable(true);
-            System.out.println("Book returned");
+            System.out.println("Book with id '" + book.getId() + "' returned");
         }
     }
     //Create printMemberInfo method
@@ -48,9 +56,8 @@ public class Member {
         System.out.println("------Member ID: " + memberId);
         System.out.println("------Name: " + name);
         System.out.println("------The borrowed books: ");
-        int borrowedBooksIndex = 1;
         for (Book book : borrowedBooks) {
-            System.out.println(">>>Borrowed book number '" + borrowedBooksIndex++ + "' whit Title : " + book.getTitle());
-        }if (borrowedBooks.isEmpty())   System.out.println("Borrowed books is empty");
+            System.out.println(">>>Borrowed book with id '" + book.getId() + "' and its Title : " + book.getTitle());
+        }if (borrowedBooks.isEmpty())   System.out.println("The list of borrowed books is empty");
     }
 }
