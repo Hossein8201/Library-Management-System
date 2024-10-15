@@ -6,22 +6,22 @@ public class Book {
     private StringBuilder id;
     private StringBuilder title;
     private StringBuilder author;
-    private boolean isAvailable = true;
+    private boolean isAvailable;
+    //To show the number of borrowing a book and track that, Create an array list.
+    private ArrayList<String> trackBorrowingTimes;
     //Now we create its constructor
     public Book(String id,String title, String author) {
         //The length of id must be exactly 5 characters
         if (id.length() != 5){
-            System.out.println("id must be exactly 5 characters long");
-            System.out.println("#####the construct process failed");
-            this.id = new StringBuilder();
-            this.title = new StringBuilder();
-            this.author = new StringBuilder();
-            this.isAvailable = false;
+            System.out.println("book id must be exactly 5 characters long");
+            System.out.println("#####the construct process failed for book with id " + id);
         }
         else {
             this.id = new StringBuilder(id);
             this.title = new StringBuilder(title);
             this.author = new StringBuilder(author);
+            this.isAvailable = true;        //Default is available
+            this.trackBorrowingTimes = new ArrayList<>();
         }
     }
     //Next we need to use getter and setter to apply the changes for private variables
@@ -38,12 +38,13 @@ public class Book {
     public boolean getIsAvailable() {
         return isAvailable;
     }
+    public ArrayList<String> getTrackBorrowingTimes() { return trackBorrowingTimes; }
     //setter methods
     public void setId(String id) {
         if(id.length() == 5)    this.id = new StringBuilder(id);         //The length of id must be exactly 5 characters
         else {
-            System.out.println("id must be exactly 5 characters long");
-            System.out.println("#####the change id process failed");
+            System.out.println("book id must be exactly 5 characters long");
+            System.out.println("#####the change id process failed for book with id " + id);
         }
     }
     public void setTitle(String title) {
@@ -55,11 +56,18 @@ public class Book {
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+    public void setTrackBorrowingTimes(String trackBorrowingTimes) {
+        this.trackBorrowingTimes.add(trackBorrowingTimes);
+    }
     //Print information method for show all details of a book
     public void printBookInfo() {
         System.out.println("------Book ID: " + id.toString());
         System.out.println("------Book Title: " + title.toString());
         System.out.println("------Book Author: " + author.toString());
-        System.out.println("------Is book available: " + isAvailable);
+        System.out.println("------Is book available in library: " + isAvailable);
+        System.out.println(">>>The number of borrowing Times is " + trackBorrowingTimes.size() + " and it tracked path's are :");
+        for (String i: trackBorrowingTimes) {
+            System.out.println("------" + i);
+        }
     }
 }
