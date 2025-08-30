@@ -1,8 +1,5 @@
 # Library Management System
 
-**Name**: Hossein Tatar  
-**Student Number**: 40133014
-
 ## Project Overview
 
 This project is a simple **Library Management System** that allows users to manage books and members, as well as handle book borrowing and returning. The project is implemented using Object-Oriented Programming (OOP) principles in Java.
@@ -41,8 +38,3 @@ Run the `Main` class to simulate the library's operations. It includes adding bo
 - Implements OOP principles (classes, encapsulation, etc.).
 - Exception handling using `throw` and `catch` to manage errors like duplicate IDs.
 - Utilizes `Varargs` to allow variable numbers of books to be passed to methods like borrowing.
-
-### Student Information
-
-- **Name**: Hossein Tatar
-- **Student Number**: 40133014
